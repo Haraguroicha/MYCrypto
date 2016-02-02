@@ -12,7 +12,8 @@
 // <http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt> "X.509 Style Guide"
 // <http://en.wikipedia.org/wiki/X.509> Wikipedia article on X.509
 
-
+#include <sys/socket.h>
+#include <arpa/inet.h>
 #import "MYCertificateInfo.h"
 #import "MYCrypto.h"
 #import "MYASN1Object.h"
@@ -402,6 +403,9 @@ MYOID *kBasicConstraintsOID, *kKeyUsageOID, *kExtendedKeyUsageOID,
         if (name && name.tagClass == 2) {
             id key, value;
             switch(name.tag) {
+                case 0:
+                    key = @"Other";
+                    value = name;
                 case 1:
                     key = @"RFC822";
                     value = name.ASCIIValue;
@@ -410,9 +414,32 @@ MYOID *kBasicConstraintsOID, *kKeyUsageOID, *kExtendedKeyUsageOID,
                     key = @"DNS";
                     value = name.ASCIIValue;
                     break;
+                case 3:
+                    key = @"X400";
+                    value = name;
+                    break;
+                case 4:
+                    key = @"Directory";
+                    value = name;
+                    break;
+                case 5:
+                    key = @"EDIParty";
+                    value = name;
+                    break;
                 case 6:
                     key = @"URI";
                     value = name.ASCIIValue;
+                    break;
+                case 7:
+                    key = @"IP";
+                    char ip[128];
+                    inet_ntop(AF_INET, [name.value bytes], ip, sizeof(ip));
+                    value = [NSString stringWithCString:ip
+                                               encoding:NSUTF8StringEncoding];
+                    break;
+                case 8:
+                    key = @"RegisteredId";
+                    value = name;
                     break;
                 default:
                     key = @(name.tag);
