@@ -6,8 +6,9 @@
 //  Copyright 2009 Jens Alfke. All rights reserved.
 //
 
+@import CommonCrypto;
 #import "MYKey.h"
-#import <CommonCrypto/CommonCryptor.h>
+//#import <CommonCrypto/CommonCryptor.h>
 
 
 /** An old-fashioned symmetric key, so named because it both encrypts and decrypts.

@@ -6,8 +6,9 @@
 //  Copyright 2009 Jens Alfke. All rights reserved.
 //
 
+@import CommonCrypto;
 #import "MYKey.h"
-#import <CommonCrypto/CommonCryptor.h>
+//#import <CommonCrypto/CommonCryptor.h>
 @class MYPublicKey, MYSHA1Digest, MYIdentity, MYSymmetricKey;
 
 

@@ -224,7 +224,7 @@
     Assert(data);
 #if MYCRYPTO_USE_IPHONE_API
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(data.bytes,data.length, digest);
+    CC_SHA1(data.bytes,(CC_LONG)data.length, digest);
 
     size_t sigLen = 1024;
     uint8_t sigBuf[sigLen];

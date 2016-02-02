@@ -6,8 +6,9 @@
 //  Copyright 2009 Jens Alfke. All rights reserved.
 //
 
+@import CommonCrypto;
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonCryptor.h>
+//#import <CommonCrypto/CommonCryptor.h>
 
 
 /** Symmetric encryption: a streaming interface for encrypting/decrypting data.

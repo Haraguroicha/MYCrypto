@@ -19,10 +19,12 @@
 
 + (uint32_t) algorithm {
     AssertAbstractMethod();
+    return NULL;
 }
 
 + (size_t) length {
     AssertAbstractMethod();
+    return NULL;
 }
 
 + (void) computeDigest: (void*)dstDigest ofBytes: (const void*)bytes length: (size_t)length {

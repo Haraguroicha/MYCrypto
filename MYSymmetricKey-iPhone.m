@@ -53,7 +53,7 @@ static const char *kCCAlgorithmNames[] = {"AES", "DES", "DES^3", "CAST", "RC4"};
 {
     Assert(algorithm <= kCCAlgorithmRC4);
     Assert(keyData);
-    unsigned keySizeInBits = keyData.length * 8;
+    unsigned keySizeInBits = (unsigned)keyData.length * 8;
     NSMutableDictionary *keyAttrs = $mdict( {(__bridge id)kSecClass, (__bridge id)kSecClassKey},
                                             {(__bridge id)kSecAttrKeyClass, (__bridge id)kSecAttrKeyClassSymmetric},
                                             {(__bridge id)kSecAttrKeyType, @(kCSSMAlgorithms[algorithm])},

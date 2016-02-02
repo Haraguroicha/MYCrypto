@@ -126,7 +126,7 @@
     Assert(data);
     Assert(signature);
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(data.bytes,data.length, digest);
+    CC_SHA1(data.bytes,(CC_LONG)data.length, digest);
     OSStatus err = SecKeyRawVerify(self.keyRef, kSecPaddingPKCS1SHA1,
                                    digest,sizeof(digest),
                                    signature.bytes, signature.length);
